@@ -1,0 +1,30 @@
+* albumsplit-nouveau
+Split your legally obtained full albums into individual tracks with ease!
+** Usage
+#+BEGIN_SRC bash
+  ./albumsplit-nouveau.py path-to-album [-f list-format] [-c final-codec] [-l path-to-list]
+#+END_SRC
+*** List Formatting
+albumsplit-nouveau is designed to support any format of arbitrary song list one may run across.
+Below is an example of such a song list:
+#+BEGIN_SRC bash
+  1. Compendium - 00:00
+  2. Legend - 10:39
+  3. Lore - 23:10
+  4. Deadweight - 39:08
+  5. Spirit at Aphelion - 48:36
+#+END_SRC
+albumsplit-nouveau only cares for the name and start time of each song, which are denoted with {name} and {time} respectively.
+An example formatting string for such a list would be "{dontcare}. {name} - {time}". This string must be present in the program arguments or at the top of the song list file. Due to limitations in our parser, all invariants between strings must be parsed out with don't-care fields for now, as shown.
+*** Codecs
+ffmpeg via pyav is used internally, so feel free to try any codec supported by those libraries. "aac" is the default.
+** Dependencies
+albumsplit-nouveau depends on pyav and parse. These may be obtained through pip:
+#+BEGIN_SRC bash
+  sudo pip install av
+  sudo pip install parse
+#+END_SRC
+** License
+GPLv3+
+** Contributions
+Pull requests always welcome.
